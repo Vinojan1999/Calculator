@@ -9,8 +9,8 @@ import src.V5.ui.CmdLineUI;
 import src.V5.ui.UI;
 
 public class main {
-    
-    public static void main(String[] args) throws Exception {
+
+    public static void main(String[] args) {
 
         Inputs inputs = new CommandLineInputs(args);
         NumberRepository numberRepository = new FileNumberRepository();

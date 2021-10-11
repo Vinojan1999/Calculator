@@ -23,19 +23,19 @@ public class CalculatorApp {
         this.ui = ui;
     }
 
-    public void execute() throws IOException {
+    public void execute() {
 
-        String operator = inputs.getOperator();
-        Double[] numbers = numberRepository.getNumbers();
-        Operation operation = operationFactory.getInstance(operator);
-        Double result = null;
         try {
-            result = operation.execute(numbers);
-        } catch (InvalidOperationException e) {
-            ui.showMessage("Error occurred" + e.getMessage());
-            return;
+            String operator = inputs.getOperator();
+            Double[] numbers = numberRepository.getNumbers();
+            Operation operation = operationFactory.getInstance(operator);
+            Double result = operation.execute(numbers);
+            ui.showMessage("The result is " + result);
+
+        } catch (InvalidOperationException | InvalidInputException | NumberRepositoryException e) {
+            ui.showMessage("Error occurred! " + e.getMessage());
+
         }
-        ui.showMessage("The result is " + result);
 
     }
 }
